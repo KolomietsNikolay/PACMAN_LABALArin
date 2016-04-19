@@ -84,22 +84,33 @@ void DrawSq()
 	if (mbr)x += 0.0001;
 
 	if (x <= -0.7 && y >= -0.85){
-		x = 500;
-		mciSendString(L"stop E:\\crash.mp3", NULL, 0, NULL);
-		return;
+		x = -500; y = -500;
+		mciSendString(L"stop E:\\fon.mp3", NULL, 0, NULL);
+		mciSendString(L"play E:\\crash.wav wait", NULL, 0, NULL);
 	}
 
 	if ((x >= -0.5 && x <= 0.1) && y <= 0.65){
-		x = 500;
-		return;
+		x = -500; y = -500;
+		mciSendString(L"stop E:\\fon.mp3", NULL, 0, NULL);
+		mciSendString(L"play E:\\crash.wav wait", NULL, 0, NULL);
+		
 	}
 
 	if ((x >= 0.15 && x <= 0.55) && y >= -0.95){
-		x = 500;
-		return;
+		x = -500; y = -500;
+		mciSendString(L"stop E:\\fon.mp3", NULL, 0, NULL);
+		mciSendString(L"play E:\\crash.wav wait", NULL, 0, NULL);
+	}
+	if (x > 0.6 && x < 0.8)
+	{
+		mciSendString(L"stop E:\\fon.mp3", NULL, 0, NULL);
+		mciSendString(L"play E:\\win.mp3", NULL, 0, NULL);
+		x += 0.2;
 	}
 	//if (x >= 0.7 && y <= 0.85)x -= 0.001;
 	PaintPreg();
+
+	
 
 	glPushMatrix();
 	//PaintM();
@@ -226,7 +237,5 @@ int main(int iArgc, char **cppArgv)
 	curWin = glutGetWindow();
 
 	glutMainLoop();
-
 	return 0;
-
 }
